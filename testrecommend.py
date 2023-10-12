@@ -12,18 +12,18 @@ def load_ranker(cfg_file):
 if __name__ == '__main__':
     preprocess.extract_columns()
     preprocess.make_corpus()
-    songs = pd.read_csv('formatted_songs.csv')
+    songs = pd.read_csv('data/formatted_songs.csv')
 
-    cfg = "config.toml"
+    cfg = "config/config.toml"
     idx = metapy.index.make_inverted_index(cfg)
     ranker = load_ranker(cfg)
 
-    query_name = "i just wanna rock"
+    query_name = "love"
     query = metapy.index.Document()
     query.content(query_name.lower())
 
-    top_k = len(songs)
-    results = ranker.score(idx, query, top_k)
+    # top_k = len(songs)
+    results = ranker.score(idx, query)
 
     count = 0
     topset = set()

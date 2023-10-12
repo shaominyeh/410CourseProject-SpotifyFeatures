@@ -1,5 +1,5 @@
 prefix = "."
-stop-words = "stopwords.txt"
+stop-words = "config/stopwords.txt"
 
 dataset = "songs"
 corpus = "line.toml"
