@@ -1,4 +1,3 @@
-__pycache__/
 idx/
 config/songs/*.dat
 data/formatted_songs.csv
