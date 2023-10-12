@@ -7,6 +7,10 @@ def extract_columns():
   if not os.path.isfile('data/formatted_songs.csv'):
     if os.path.isfile('config/songs/songs.dat'):
       os.remove('config/songs/songs.dat')
+    if os.path.isfile('config/lyrics/lyrics.dat'):
+      os.remove('config/lyrics/lyrics.dat')
+      os.remove('config/artist/artist.dat')
+      os.remove('config/title/title.dat')
     songs = pd.read_csv('data/spotify_songs.csv')
     songs = songs.dropna()
     songs = songs.drop_duplicates()
@@ -17,7 +21,7 @@ def extract_columns():
   return 'data/formatted_songs.csv'
 
 def make_corpus():
-  if not os.path.isfile('config/songs/songs.dat'):
+  if not os.path.isfile('config/songs/songs.dat') or not os.path.isfile('config/lyrics/lyrics.dat'):
     csv_file = 'data/formatted_songs.csv'
     output_file = 'config/songs/songs.dat'
     csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
@@ -27,11 +31,27 @@ def make_corpus():
         combined_content = "{} {} {}".format(row[2], row[3], row[4])
         dat_file.write(combined_content.lower() + "\n") 
 
-    output_file = 'config/songs/lyrics.dat'
+    output_file = 'config/lyrics/lyrics.dat'
     csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
     next(csv_reader, None)
     with open(output_file, 'w') as dat_file:
       for row in csv_reader:
         combined_content = "{}".format(row[4])
+        dat_file.write(combined_content.lower() + "\n") 
+
+    output_file = 'config/artist/artist.dat'
+    csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
+    next(csv_reader, None)
+    with open(output_file, 'w') as dat_file:
+      for row in csv_reader:
+        combined_content = "{}".format(row[3])
+        dat_file.write(combined_content.lower() + "\n") 
+
+    output_file = 'config/title/title.dat'
+    csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
+    next(csv_reader, None)
+    with open(output_file, 'w') as dat_file:
+      for row in csv_reader:
+        combined_content = "{}".format(row[2])
         dat_file.write(combined_content.lower() + "\n") 
     

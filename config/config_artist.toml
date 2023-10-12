@@ -1,9 +1,9 @@
 prefix = "config/"
 stop-words = "config/stopwords.txt"
 
-dataset = "songs"
+dataset = "artist"
 corpus = "line.toml"
-index = "idxsongs"
+index = "idxartist"
 
 [[analyzers]]
 method = "ngram-word"
