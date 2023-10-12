@@ -1,2 +1,3 @@
-*.pyc
 idx/
+songs/songs.dat
+formatted_songs.csv
