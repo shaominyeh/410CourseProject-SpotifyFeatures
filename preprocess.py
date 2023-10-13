@@ -5,14 +5,13 @@ import pandas as pd
 
 def extract_columns():
     if not os.path.isfile('data/formatted_songs.csv'):
-        if os.path.isfile('config/songs/songs.dat'): os.remove('config/songs/songs.dat')
-        if os.path.isfile('config/lyrics/lyrics.dat'):
+        if not os.path.isfile('config/songs/songs.dat') or not os.path.isfile('config/lyrics/lyrics.dat'):
+            os.remove('config/songs/songs.dat')
             os.remove('config/lyrics/lyrics.dat')
             os.remove('config/artist/artist.dat')
             os.remove('config/title/title.dat')
         songs = pd.read_csv('data/spotify_songs.csv')
         songs = songs.dropna()
-        songs = songs.drop_duplicates()
         songs = songs[songs['language'] == 'en']
         songs = songs.drop(['track_album_id', 'playlist_id', 'language'], axis = 1)
         songs.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)

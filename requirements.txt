@@ -1,7 +1,4 @@
-metapy
-numpy
-pandas
-os
-csv
-math
-flask
+metapy==0.2.13
+numpy==1.18.5
+pandas==0.25.3
+flask==1.1.4
