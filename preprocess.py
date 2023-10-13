@@ -19,38 +19,21 @@ def extract_columns():
         songs.to_csv('data/formatted_songs.csv')
     return 'data/formatted_songs.csv'
 
+def create_dat_file(output_file):
+    csv_file = 'data/formatted_songs.csv'
+    csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
+    next(csv_reader, None)
+    with open(output_file, 'w') as dat_file:
+        for row in csv_reader:
+            if output_file == 'config/lyrics/lyrics.dat': combined_content = "{}".format(row[4])
+            elif output_file == 'config/artist/artist.dat': combined_content = "{}".format(row[3])
+            elif output_file == 'config/title/title.dat': combined_content = "{}".format(row[2])
+            else: combined_content = "{} {} {}".format(row[2], row[3], row[4])
+            dat_file.write(combined_content.lower() + "\n")  
+
 def make_corpus():
     if not os.path.isfile('config/songs/songs.dat') or not os.path.isfile('config/lyrics/lyrics.dat'):
-        csv_file = 'data/formatted_songs.csv'
-        output_file = 'config/songs/songs.dat'
-        csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
-        next(csv_reader, None)
-        with open(output_file, 'w') as dat_file:
-            for row in csv_reader:
-                combined_content = "{} {} {}".format(row[2], row[3], row[4])
-                dat_file.write(combined_content.lower() + "\n") 
-
-        output_file = 'config/lyrics/lyrics.dat'
-        csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
-        next(csv_reader, None)
-        with open(output_file, 'w') as dat_file:
-            for row in csv_reader:
-                combined_content = "{}".format(row[4])
-                dat_file.write(combined_content.lower() + "\n") 
-
-        output_file = 'config/artist/artist.dat'
-        csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
-        next(csv_reader, None)
-        with open(output_file, 'w') as dat_file:
-            for row in csv_reader:
-                combined_content = "{}".format(row[3])
-                dat_file.write(combined_content.lower() + "\n") 
-
-        output_file = 'config/title/title.dat'
-        csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
-        next(csv_reader, None)
-        with open(output_file, 'w') as dat_file:
-            for row in csv_reader:
-                combined_content = "{}".format(row[2])
-                dat_file.write(combined_content.lower() + "\n") 
-    
+        create_dat_file('config/songs/songs.dat')
+        create_dat_file('config/lyrics/lyrics.dat')
+        create_dat_file('config/artist/artist.dat')
+        create_dat_file('config/title/title.dat')

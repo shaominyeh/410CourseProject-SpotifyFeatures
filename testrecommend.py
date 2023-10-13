@@ -16,7 +16,6 @@ def load_ranker(cfg_file):
 
 def ranking(songs, user_query, config):
     cfg = config
-    print("----------------------")
     idx = metapy.index.make_inverted_index(cfg)
     ranker = load_ranker(cfg)
 
@@ -27,11 +26,7 @@ def ranking(songs, user_query, config):
     results = ranker.score(idx, query)
 
     songs_list = np.zeros(len(songs))
-    count = 0
     for result in results:
-        if count < 10:
-            print(result)
-            count += 1
         songs_list[result[0]] = result[1]
     return songs_list
 
