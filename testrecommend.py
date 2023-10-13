@@ -2,7 +2,6 @@ import math
 import metapy
 import numpy as np
 import pandas as pd
-import sys
 
 import preprocess
 
@@ -57,10 +56,10 @@ def print_results(songs_list, top_k):
 
 if __name__ == '__main__':
     songs = preprocess_tasks()
-    query = "the"
+    query = "hello"
 
     rank_separate = True
-    if rank_separate: songs_list = separated_ranking(songs, query, 0.3, 0.4, 0.3)
+    if rank_separate: songs_list = separated_ranking(songs, query, 0.35, 0.35, 0.3)
     else: songs_list = ranking(songs, query, "config/config.toml")
 
     print_results(songs_list, 10)
