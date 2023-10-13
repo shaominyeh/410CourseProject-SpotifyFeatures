@@ -1,2 +1,3 @@
 https://stackoverflow.com/questions/36340627/remove-non-ascii-characters-from-pandas-column (extract_columns)
 https://github.com/CS410fa23-Assignment/MP2.2 (recommendation format)
+https://github.com/meta-toolkit/meta/issues/206 https://stackoverflow.com/questions/53369759/flask-code-inside-a-app-route-fails-runs-forever-when-called-a-second-time 

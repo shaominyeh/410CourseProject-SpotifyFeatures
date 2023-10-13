@@ -7,7 +7,6 @@
       padding: 0;
       background-color: #fbf2d5;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
-      padding-top: 200px;
     }
 
     .container {
@@ -15,26 +14,31 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 50vh;
+      height: 100vh;
     }
 
     h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       margin-top: 1rem;
-      color: #a63a3b; 
-      text-align: center;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #a63a3b;
     }
     h1.page-header{
       font-size:3rem;
       line-height:3rem;
     }
+    .btn-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      
+    }
     p {
         align-items: center;
-/*         padding: 1rem 1rem; */
+        padding: 1rem 1rem;
         text-align: center;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     h2, h3, h4 {
       font-weight: normal;
@@ -45,12 +49,9 @@
       padding-left: 30px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-    button {
-      text-align: center;
-    }
-    form {
+    .btn {
       font-size: 2rem;
-      padding: 1rem 3rem;
+      padding: 1rem 2rem;
       margin: 0 1rem;
       background-color: #7fa99b;
       color: #fbf2d5;
@@ -59,20 +60,24 @@
       cursor: pointer;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease;
-      width: calc(50% - 4px);
-      margin: 0 auto;
-      text-align: center;
     }
+
+    .btn:hover {
+      background-color: #394a51;
+    }
+
     .back-btn {
       font-size: 1.2rem;
       margin-top: 1rem;
       color: #394a51;
       cursor: pointer;
-      text-align: center;
     }
 
     .back-btn:hover {
       text-decoration: underline;
+    }
+    img {
+      padding: 30px;
     }
     title {
       align-items: center;
@@ -83,11 +88,20 @@
   </head>
   <body>
     <div class="container">
-    <h1>Test</h1>
-    <p>Hello World!
-      </p>
-      <p>Description
-    </p>
+      <h1>The Spotify Feature App</h1>
+      <h2>We have three different functionalities revolving around Spotify songs:</h2>
+      <br>
+      <div class="btn-container">
+        <form action="/search_engine" method="POST">
+          <button class="btn" type="submit">Search Engine</button>
+        </form>
+        <form action="/sentiment_analysis" method="POST">
+          <button class="btn" type="submit">Sentiment Analysis</button>
+        </form>
+        <form action="/similar_songs" method="POST">
+          <button class="btn" type="submit">Similar Songs</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

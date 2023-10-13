@@ -34,25 +34,34 @@ def separated_ranking(songs, user_query, title_weight, artist_weight, lyrics_wei
           + artist_weight * ranking(songs, user_query, "config/config_artist.toml")\
           + lyrics_weight * ranking(songs, user_query, "config/config_lyrics.toml")
 
-def print_results(songs_list, top_k):
-    if (len(songs_list) == 0):
+def results_list(songs, songs_list, top_k):
+    count = 0
+    topset = set()
+    top_songs = []
+    songs_indices = np.argsort(songs_list)[::-1]
+    for song in songs_indices:
+        if songs_list[song] <= 0 or count >= top_k:
+            break
+        songpair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
+        if songpair not in topset:
+            top_songs.append((songpair, songs_list[song]))
+            topset.add(songpair)
+            count += 1
+    return top_songs
+
+def print_results(top_songs):
+    if (len(top_songs) == 0):
         print("No Songs Returned")
     else:
-        count = 0
-        topset = set()
-        songs_indices = np.argsort(songs_list)[::-1]
-        printed_one = False
-        for song in songs_indices:
-            if songs_list[song] <= 0 or count >= top_k:
-                if printed_one == False:
-                    print("No Songs Returned")
-                break
-            songpair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
-            if songpair not in topset:
-                printed_one = True
-                print(songpair)
-                topset.add(songpair)
-                count += 1
+        print(top_songs)
+
+def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weight):
+    songs = preprocess_tasks()
+
+    if rank_separated: songs_list = separated_ranking(songs, query, title_weight,\
+                                                       artist_weight, lyrics_weight)
+    else: songs_list = ranking(songs, query, "config/config.toml")
+    return results_list(songs, songs_list, 10)
 
 if __name__ == '__main__':
     songs = preprocess_tasks()
@@ -62,4 +71,4 @@ if __name__ == '__main__':
     if rank_separate: songs_list = separated_ranking(songs, query, 0.35, 0.35, 0.3)
     else: songs_list = ranking(songs, query, "config/config.toml")
 
-    print_results(songs_list, 10)
+    print_results(results_list(songs, songs_list, 10))

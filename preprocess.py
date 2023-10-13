@@ -5,8 +5,8 @@ import pandas as pd
 
 def extract_columns():
     if not os.path.isfile('data/formatted_songs.csv'):
-        if not os.path.isfile('config/songs/songs.dat') or not os.path.isfile('config/lyrics/lyrics.dat'):
-            os.remove('config/songs/songs.dat')
+        if os.path.isfile('config/songs/songs.dat'): os.remove('config/songs/songs.dat')
+        if os.path.isfile('config/lyrics/lyrics.dat'):
             os.remove('config/lyrics/lyrics.dat')
             os.remove('config/artist/artist.dat')
             os.remove('config/title/title.dat')
