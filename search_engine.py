@@ -22,7 +22,8 @@ def ranking(songs, user_query, config):
     query = metapy.index.Document()
     query.content(query_name.lower())
 
-    results = ranker.score(idx, query)
+    top_k = 200
+    results = ranker.score(idx, query, top_k)
 
     songs_list = np.zeros(len(songs))
     for result in results:
@@ -61,7 +62,7 @@ def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weig
     if rank_separated: songs_list = separated_ranking(songs, query, title_weight,\
                                                        artist_weight, lyrics_weight)
     else: songs_list = ranking(songs, query, "config/config.toml")
-    return results_list(songs, songs_list, 10)
+    return results_list(songs, songs_list, 50)
 
 if __name__ == '__main__':
     songs = preprocess_tasks()

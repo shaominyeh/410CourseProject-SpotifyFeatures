@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 
 import search_engine
 
@@ -19,7 +19,7 @@ def search_engine_list():
                                     float(request.form['artist_weight']), float(request.form['lyrics_weight']))
     else: 
         top_songs = search_engine.query_search(request.form['query'], False, 0.0, 0.0, 0.0)
-    print(top_songs)
+    return render_template('search-engine-results.html', songs=top_songs)
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=32000, threaded=False)
+    app.run(threaded=False)
