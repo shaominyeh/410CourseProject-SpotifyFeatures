@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
   <style>
     body {
       margin: 0;
@@ -23,24 +24,29 @@
       margin-top: 1rem;
       color: #a63a3b;
     }
-    h1.page-header{
-      font-size:3rem;
-      line-height:3rem;
+
+    h1.page-header {
+      font-size: 3rem;
+      line-height: 3rem;
     }
+
     .btn-container {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      
     }
+
     p {
-        align-items: center;
-        padding: 1rem 1rem;
-        text-align: center;
+      align-items: center;
+      padding: 1rem 1rem;
+      text-align: center;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-    h2, h3, h4 {
+
+    h2,
+    h3,
+    h4 {
       font-weight: normal;
       align-items: center;
       justify-content: center;
@@ -49,6 +55,7 @@
       padding-left: 30px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+
     .btn {
       font-size: 2rem;
       padding: 1rem 2rem;
@@ -76,32 +83,36 @@
     .back-btn:hover {
       text-decoration: underline;
     }
+
     img {
       padding: 30px;
     }
+
     title {
       align-items: center;
       text-align: center;
       justify-content: center;
     }
   </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>The Spotify Feature App</h1>
-      <h2>We have three different functionalities revolving around Spotify songs:</h2>
-      <br>
-      <div class="btn-container">
-        <form action="/search_engine" method="POST">
-          <button class="btn" type="submit">Search Engine</button>
-        </form>
-        <form action="/sentiment_analysis" method="POST">
-          <button class="btn" type="submit">Sentiment Analysis</button>
-        </form>
-        <form action="/similar_songs" method="POST">
-          <button class="btn" type="submit">Similar Songs</button>
-        </form>
-      </div>
+</head>
+
+<body>
+  <div class="container">
+    <h1>The Spotify Feature App</h1>
+    <h2>We have three different functionalities revolving around Spotify songs:</h2>
+    <br>
+    <div class="btn-container">
+      <form action="/search_engine" method="POST">
+        <button class="btn" type="submit">Search Engine</button>
+      </form>
+      <form action="/sentiment_analysis" method="POST">
+        <button class="btn" type="submit">Sentiment Analysis</button>
+      </form>
+      <form action="/similar_songs" method="POST">
+        <button class="btn" type="submit">Similar Songs</button>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

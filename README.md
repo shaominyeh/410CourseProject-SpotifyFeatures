@@ -10,6 +10,6 @@ requirements.txt library
 
 how to run flask
 
-Note: dataset only has songs up to Jan 2020
+Note: dataset only has songs up to Jan 2020 https://www.kaggle.com/datasets/imuhammad/audio-features-and-lyrics-of-spotify-songs 
 
 ### How each function works and why
