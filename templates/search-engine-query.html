@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fbf2d5;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      padding-bottom: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      color: #a63a3b;
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    h1.page-header {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+
+    p {
+      align-items: center;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-weight: normal;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-right: 30px;
+      padding-left: 30px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    button {
+      text-align: center;
+    }
+
+    form {
+      font-size: 2rem;
+      padding: 1rem 3rem;
+      margin: 0 1rem;
+      background-color: #7fa99b;
+      color: #fbf2d5;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      width: calc(50% - 4px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .back-btn {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #394a51;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    title {
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Query Search</h1>
+  <h2>Type in a query name to retrieve the top 25 songs</h2>
+  <p>If you do not want separated rankings, leave the weights empty
+    <br>
+    If any weight is left empty, rankings will default to combined rankings
+    <br>
+    Please round your weights to the hundredth place
+  </p>
+  <form action="/search_engine_list" method="post">
+    <br><br>
+    <label for="query">Query:</label>
+    <input type="text" id="query" name="query" placeholder="Query Name" required>
+    <br><br>
+    <label for="weights">Separated Ranking Weights:</label>
+    <br>
+    <input type="number" id="title_weight" name="title_weight" placeholder="Title Weight" min="0.01" step="0.01">
+    <input type="number" id="artist_weight" name="artist_weight" placeholder="Artist Weight" min="0.01" step="0.01">
+    <input type="number" id="lyrics_weight" name="lyrics_weight" placeholder="Lyrics Weight" min="0.01" step="0.01">
+    <br><br>
+    <input type="submit" value="Submit">
+    <form>
+      <input type="button" value="Back" onclick="history.back()">
+    </form>
+  </form>
+</body>
+
+</html>

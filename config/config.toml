@@ -1,0 +1,11 @@
+prefix = "config/"
+stop-words = "config/stopwords.txt"
+
+dataset = "songs"
+corpus = "line.toml"
+index = "idxsongs"
+
+[[analyzers]]
+method = "ngram-word"
+ngram = 1
+filter = "default-unigram-chain"
