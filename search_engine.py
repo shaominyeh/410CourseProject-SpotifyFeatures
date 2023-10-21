@@ -50,7 +50,7 @@ def results_list(songs, songs_list, top_k):
     return top_songs
 
 def print_results(top_songs):
-    if (len(top_songs) == 0):
+    if len(top_songs) == 0:
         print("No Songs Returned")
     else:
         print(top_songs)

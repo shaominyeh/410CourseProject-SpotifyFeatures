@@ -132,14 +132,15 @@
 </head>
 
 <body>
-  <h1>Top Songs</h1>
-  <h2>Here are the top 50 songs that match your query </h2>
+  <h1>Songs List</h1>
+  <h2>Here are the songs that match your query</h2>
+  <p>Before choosing a song, choose a weighting option within that row for the similar song search (Note: this may take up to a minute)</p>
   <table>
     <thead>
       <tr>
         <th>Song Name</th>
         <th>Artist Name</th>
-        <th>Computed Score</th>
+        <th>Song Selection</th>
       </tr>
     </thead>
     <tbody>
@@ -147,7 +148,16 @@
       <tr>
         <td>{{ song[0][0] }}</td>
         <td>{{ song[0][1] }}</td>
-        <td>{{ song[1] }}</td>
+        <td>
+          <form method="POST" action="/similar_songs_query/{{ song[1] }}">
+            <select id="feature" name="selected_feature" required>
+              <option value="tfidf">Only TF-IDF</option>
+              <option value="musical">Only Musical</option>
+              <option value="combined">Combined</option>
+            </select>
+            <button class="button" type="submit">Select Song</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
