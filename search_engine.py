@@ -1,4 +1,3 @@
-import math
 import metapy
 import numpy as np
 import pandas as pd
@@ -37,16 +36,16 @@ def separated_ranking(songs, user_query, title_weight, artist_weight, lyrics_wei
 
 def results_list(songs, songs_list, top_k):
     count = 0
-    topset = set()
+    top_set = set()
     top_songs = []
     songs_indices = np.argsort(songs_list)[::-1]
     for song in songs_indices:
         if songs_list[song] <= 0 or count >= top_k:
             break
-        songpair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
-        if songpair not in topset:
-            top_songs.append((songpair, songs_list[song]))
-            topset.add(songpair)
+        song_pair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
+        if song_pair not in top_set:
+            top_songs.append((song_pair, songs_list[song]))
+            top_set.add(song_pair)
             count += 1
     return top_songs
 

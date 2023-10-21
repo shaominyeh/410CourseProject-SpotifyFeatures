@@ -1,8 +1,5 @@
-import math
-import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import hstack
 
@@ -13,41 +10,77 @@ def preprocess_tasks():
     preprocess.make_corpus()
     return pd.read_csv('data/formatted_songs.csv')
 
-songs = preprocess_tasks()
-lyrics = songs['lyrics']
-features = songs[['track_popularity','danceability','energy','key','loudness','mode','speechiness'\
+def tfidf_features(song_index):
+    lyrics = songs['lyrics']
+    tfidf_model = TfidfVectorizer()
+    tfidf_features = tfidf_model.fit_transform(lyrics)
+    features = tfidf_features.toarray()
+
+    knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
+    knn_model.fit(features)
+
+    query_features = features[song_index]
+    return knn_model.kneighbors(query_features.reshape(1, -1))
+
+def musical_features(song_index):
+    features = songs[['track_popularity','danceability','energy','key','loudness','mode','speechiness'\
                   ,'acousticness','instrumentalness','liveness','valence','tempo','duration_ms']]
 
-chosen_index = 2
-tfidf_vectorizer = TfidfVectorizer()
-lyrics_tfidf = tfidf_vectorizer.fit_transform(lyrics)
+    knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
+    knn_model.fit(features)    
 
-combined_features = hstack([lyrics_tfidf.toarray(), features])
-# combined_features = features
-similarities = cosine_similarity(combined_features)
+    query_features = features.iloc[song_index].values.reshape(1, -1)
+    return knn_model.kneighbors(query_features.reshape(1, -1))
 
-knn_model = NearestNeighbors(n_neighbors=20, metric='cosine')
-knn_model.fit(combined_features)
+def combined_features(song_index):
+    lyrics = songs['lyrics']
+    tfidf_model = TfidfVectorizer()
+    tfidf_features = tfidf_model.fit_transform(lyrics)
+    musical_features = songs[['track_popularity','danceability','energy','key','loudness','mode','speechiness'\
+                ,'acousticness','instrumentalness','liveness','valence','tempo','duration_ms']]
+    features = hstack([tfidf_features.toarray(), musical_features])
+    
+    knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
+    knn_model.fit(features)
 
-# query_features = combined_features[chosen_index]
-# # query_features = combined_features.iloc[chosen_index].values.reshape(1, -1)
+    query_features = features.getrow(song_index).toarray()
+    return knn_model.kneighbors(query_features)
 
-# distances, indices = knn_model.kneighbors(query_features.reshape(1, -1))
-query_features = combined_features.getrow(chosen_index).toarray()
+def similar_songs(user_index, features_index):
+    songs = preprocess_tasks()
 
-distances, indices = knn_model.kneighbors(query_features)
+    if features_index == 0:
+        distances, indices = tfidf_features(user_index)
+    elif features_index == 1:
+        distances, indices = musical_features(user_index)
+    else:
+        distances, indices = combined_features(user_index)
+    return results_list(songs, distances, indices)
 
-count = 0
-topset = set()
-top_songs = []
-top_k = 10
-for song in indices[0]:
-    if count >= top_k:
-        break
-    songpair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
-    if songpair not in topset:
-        top_songs.append(songpair)
-        topset.add(songpair)
-        count += 1
+def results_list(songs, distances, indices):
+    count = 0
+    top_set = set()
+    top_songs = []
+    top_k = 25
+    for song in indices[0]:
+        if count >= top_k:
+            break
+        song_pair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
+        if song_pair not in top_set:
+            top_songs.append((song_pair,distances[0][count]))
+            top_set.add(song_pair)
+            count += 1
+    return top_songs
 
-print(top_songs)
+def print_results(top_songs):
+    if (len(top_songs) == 0):
+        print("No Songs Returned")
+    else:
+        print(top_songs)
+
+if __name__ == '__main__':
+    songs = preprocess_tasks()
+    chosen_index = 0
+    features_index = 2
+
+    print_results(similar_songs(chosen_index, features_index))
