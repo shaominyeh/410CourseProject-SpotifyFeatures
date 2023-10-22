@@ -1,9 +1,0 @@
-index = "idxsongs"
-corpus = "line.toml"
-dataset = "songs"
-prefix = "../config/"
-stop-words = "../config/stopwords.txt"
-[[analyzers]]
-	filter = "default-unigram-chain"
-	method = "ngram-word"
-	ngram = 1
