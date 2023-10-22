@@ -1,0 +1,9 @@
+index = "idxtitle"
+corpus = "line.toml"
+dataset = "title"
+prefix = "../config/"
+stop-words = "../config/stopwords_lenient.txt"
+[[analyzers]]
+	filter = "default-unigram-chain"
+	method = "ngram-word"
+	ngram = 1

@@ -1,0 +1,9 @@
+index = "idxartist"
+corpus = "line.toml"
+dataset = "artist"
+prefix = "../config/"
+stop-words = "../config/stopwords_lenient.txt"
+[[analyzers]]
+	filter = "default-unigram-chain"
+	method = "ngram-word"
+	ngram = 1
