@@ -1,4 +1,6 @@
 https://www.kaggle.com/datasets/imuhammad/audio-features-and-lyrics-of-spotify-songs (Dataset)
+https://scikit-learn.org/stable/modules/classes.html (Scikit-learn functions)
+
 https://stackoverflow.com/questions/36340627/remove-non-ascii-characters-from-pandas-column (extract_columns utf-8 issue)
 https://github.com/CS410fa23-Assignment/MP2.2 (search engine format)
 https://github.com/meta-toolkit/meta/issues/206 (Solving flask issue, running python app.py directly and threads)
