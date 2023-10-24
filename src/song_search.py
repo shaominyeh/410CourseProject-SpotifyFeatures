@@ -1,13 +1,16 @@
+"""This module searches for a song index."""
 import pandas as pd
 
 import preprocess
 
 def preprocess_tasks():
+    """Preprocesses csv and data files."""
     preprocess.extract_columns()
     preprocess.make_corpus()
     return pd.read_csv('../data/formatted_songs.csv')
 
 def nonduplicated_dict(songs):
+    """Removes duplicates from songs data."""
     song_dict = {}
     for song in range(len(songs)):
         song_pair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
@@ -16,6 +19,7 @@ def nonduplicated_dict(songs):
     return song_dict
 
 def song_search(query_name, is_title):
+    """Searches for song based on given query and search mode."""
     songs = preprocess_tasks()
     song_dict = nonduplicated_dict(songs)
 
@@ -28,7 +32,7 @@ def song_search(query_name, is_title):
     return song_list
 
 if __name__ == '__main__':
-    query_name = "tHE"
-    is_title = False
+    USER_QUERY = "tHE"
+    IS_TITLE_SEARCH = False
 
-    print(song_search(query_name, is_title))
+    print(song_search(USER_QUERY, IS_TITLE_SEARCH))
