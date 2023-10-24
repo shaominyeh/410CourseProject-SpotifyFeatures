@@ -53,7 +53,9 @@ def print_results(top_songs):
     if len(top_songs) == 0:
         print("No Songs Returned")
     else:
-        print(top_songs)
+        print("The top 10 songs for your query are: ")
+        for pair, score in top_songs:
+            print("Song Title: {} | Artist: {} | Score {}".format(pair[0], pair[1], score))
 
 def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weight):
     songs = preprocess_tasks()

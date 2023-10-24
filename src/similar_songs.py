@@ -76,7 +76,9 @@ def print_results(top_songs):
     if len(top_songs) == 0:
         print("No Songs Returned")
     else:
-        print(top_songs)
+        print("The closest 25 songs for your song are: ")
+        for pair, score in top_songs:
+            print("Song Title: {} | Artist: {} | Distance {}".format(pair[0], pair[1], score))
 
 if __name__ == '__main__':
     chosen_index = 0
