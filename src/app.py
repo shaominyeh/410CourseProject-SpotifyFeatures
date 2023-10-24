@@ -1,3 +1,4 @@
+"""This module contains the Web Application."""
 from flask import Flask, request, render_template
 
 import search_engine
@@ -8,33 +9,42 @@ app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
 def home_page():
+    """Home page for the website."""
     return render_template('home-page.html')
 
 @app.route('/search_engine', methods=['POST'])
 def search_query():
+    """User inputs for the search engine."""
     return render_template('search-engine-query.html')
 
 @app.route('/search_engine_list', methods=['POST'])
 def search_engine_list():
-    if request.form['title_weight'] and request.form['artist_weight'] and request.form['lyrics_weight']: 
-        top_songs = search_engine.query_search(request.form['query'], True, float(request.form['title_weight']),\
-                                    float(request.form['artist_weight']), float(request.form['lyrics_weight']))
-    else: 
+    """Search engine list based on the previous query."""
+    title_weight = request.form['title_weight']
+    artist_weight = request.form['artist_weight']
+    lyrics_weight = request.form['lyrics_weight']
+    if title_weight and artist_weight and lyrics_weight:
+        top_songs = search_engine.query_search(request.form['query'], True,\
+                                    float(title_weight), float(artist_weight), float(lyrics_weight))
+    else:
         top_songs = search_engine.query_search(request.form['query'], False, 0.0, 0.0, 0.0)
     return render_template('search-engine-results.html', songs=top_songs)
 
 @app.route('/song_search_similar', methods=['POST'])
 def song_search_similar():
+    """User inputs for the song search in the similar songs model."""
     return render_template('song-search-similar.html')
 
 @app.route('/song_search_similar_list', methods=['POST'])
 def song_search_similar_list():
-    all_songs = song_search.song_search(request.form['query'], \
-                                        True if request.form['search_choice'] == "title" else False)
+    """Song search list for choosing a song in the similar songs model."""
+    all_songs = song_search.song_search(\
+        request.form['query'], bool(request.form['search_choice'] == "title"))
     return render_template('song-search-similar-list.html', songs=all_songs)
 
 @app.route('/similar_songs_query/<user_index>', methods=['POST'])
-def similar_songs_query(user_index):
+def similar_songs_list(user_index):
+    """Similar song list based on the chosen song and feature option."""
     top_songs = similar_songs.similar_songs(int(user_index), request.form['selected_feature'])
     return render_template('similar-songs-results.html', songs=top_songs)
 

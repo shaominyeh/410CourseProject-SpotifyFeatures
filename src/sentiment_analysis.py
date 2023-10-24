@@ -85,8 +85,8 @@ if __name__ == '__main__':
     y = songs['valence']
 
     user_tfidf_model, user_model, calculated_mse = train_model(X, y, UNIFIED_STATE)
-    model_predicted_score, song_actual_score, new_query_vector = \
-        compute_sentiment(songs, CHOSEN_INDEX, user_model, user_tfidf_model)
+    model_predicted_score, song_actual_score, new_query_vector = compute_sentiment(\
+        songs, CHOSEN_INDEX, user_model, user_tfidf_model)
     song_top_words, model_feature_names = compute_words(user_tfidf_model, new_query_vector)
     print_items(model_predicted_score, song_actual_score,\
                  song_top_words, model_feature_names, calculated_mse)

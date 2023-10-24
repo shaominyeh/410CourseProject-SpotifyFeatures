@@ -92,6 +92,6 @@ def print_results(top_songs):
 
 if __name__ == '__main__':
     CHOSEN_INDEX = 0
-    WHICH_FEATURE = "tfidf"
+    CHOSEN_FEATURE = "tfidf"
 
-    print_results(similar_songs(CHOSEN_INDEX, WHICH_FEATURE))
+    print_results(similar_songs(CHOSEN_INDEX, CHOSEN_FEATURE))
