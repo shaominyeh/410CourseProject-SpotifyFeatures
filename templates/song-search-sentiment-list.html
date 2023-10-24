@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fbf2d5;
+      text-align: center;
+      justify-content: center;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 175px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      color: #a63a3b;
+    }
+
+    h1.page-header {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    p {
+      align-items: center;
+      padding: 1rem 1rem;
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-weight: normal;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-right: 30px;
+      padding-left: 30px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .btn {
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      margin: 0 1rem;
+      background-color: #7fa99b;
+      color: #fbf2d5;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #394a51;
+    }
+
+    .back-btn {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #394a51;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      padding: 30px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: #7fa99b;
+      color: #fbf2d5;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      padding-right: 50px;
+      width: 50%;
+      height: 30%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Songs List</h1>
+  <h2>Here are the songs that match your query</h2>
+  <p>Before choosing a song, choose if you want to tokenize the lyrics dataset (Takes longer but less prone to overfit). Furthermore, pick a random state if desired. Note that this will take longer than a minute to run.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Song Name</th>
+        <th>Artist Name</th>
+        <th>Song Selection</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for song in songs %}
+      <tr>
+        <td>{{ song[0][0] }}</td>
+        <td>{{ song[0][1] }}</td>
+        <td>
+          <form method="POST" action="/sentiment_analysis_results/{{ song[1] }}">
+            <select id="tokenization" name="tokenization" required>
+              <option value="False">No Tokenization</option>
+              <option value="True">Lyric Tokenization</option>
+            </select>
+            <input type="number" id="random_state" name="random_state" placeholder="Random Model State">
+            <button class="button" type="submit">Select Song</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <form>
+    <input type="button" value="Back" onclick="history.back()">
+  </form>
+</body>
+
+</html>

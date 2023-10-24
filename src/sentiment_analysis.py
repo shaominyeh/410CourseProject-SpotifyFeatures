@@ -63,6 +63,21 @@ def compute_words(tfidf_model, query_vector):
     sorted_scores = sorted(word_dict.items(), key=lambda x:x[1], reverse = True)
     return sorted_scores[:10], feature_names
 
+def result_items(chosen_index, unified_state, is_tokenized_query):
+    songs = preprocess_tasks()
+    if is_tokenized_query:
+        X = tokenize_query(songs)
+    else:
+        X = songs['lyrics']
+    y = songs['valence']
+
+    user_tfidf_model, user_model, calculated_mse = train_model(X, y, unified_state)
+    model_predicted_score, song_actual_score, new_query_vector = compute_sentiment(\
+        songs, chosen_index, user_model, user_tfidf_model)
+    song_top_words, model_feature_names = compute_words(user_tfidf_model, new_query_vector)
+    return model_predicted_score, song_actual_score,\
+                 song_top_words, model_feature_names, calculated_mse
+
 def print_items(predicted_score, actual_score, top_words, feature_names, mse):
     """Prints scores and significant words."""
     print("Calculated MSE: {}".format(mse))
@@ -77,16 +92,7 @@ if __name__ == '__main__':
     UNIFIED_STATE = 47
     IS_TOKENIZED_QUERY = False
 
-    songs = preprocess_tasks()
-    if IS_TOKENIZED_QUERY:
-        X = tokenize_query(songs)
-    else:
-        X = songs['lyrics']
-    y = songs['valence']
-
-    user_tfidf_model, user_model, calculated_mse = train_model(X, y, UNIFIED_STATE)
-    model_predicted_score, song_actual_score, new_query_vector = compute_sentiment(\
-        songs, CHOSEN_INDEX, user_model, user_tfidf_model)
-    song_top_words, model_feature_names = compute_words(user_tfidf_model, new_query_vector)
-    print_items(model_predicted_score, song_actual_score,\
-                 song_top_words, model_feature_names, calculated_mse)
+    main_predicted_score, main_actual_score, main_top_words, main_feature_names, main_mse\
+          = result_items(CHOSEN_INDEX, UNIFIED_STATE, IS_TOKENIZED_QUERY)
+    print_items(main_predicted_score, main_actual_score,\
+                 main_top_words, main_feature_names, main_mse)
