@@ -16,9 +16,18 @@ This section lists all the required deliverables for the class project:
 
 ## Project Overview
 
-## Project Installation and Development
+This project consists of three different models regarding songs from a Spotify dataset all encapsulated by a Flask application. The TF-IDF Search Engine model takes a user-submitted query and outputs the most similar songs based on TF-IDF weighting. The Similar Songs model takes a user-submitted song and outputs the most similar songs based on TF-IDF and musical features. The Sentiment Analysis model takes a user-submitted song and outputs the sentiment analysis based on that song. 
 
-### Initial Installation
+## Project Installation
+This section consists of the necessary installations to run this project:
+
+### System Environment
+
+### Repository Cloning
+
+### Library Requirements
+
+## Project Development
 
 ### Flask Application
 
