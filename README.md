@@ -6,17 +6,13 @@ By: Shao-Min Yeh (snyeh2@illinois.edu)
 
 ## Deliverables 
 
-This section lists all the required deliverables for the class project. 
+This section lists all the required deliverables for the class project:
 
-### Project Proposal
-
-### Project Progress Report
-
-### Code
-
-### Final Documentation
-
-### Presentation
+* [Project Proposal](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Project%20Proposal.pdf)
+* [Progress Report](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Project%20Progress%20Report.pdf)
+* [Code](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src)
+* Final Documentation WIP
+* Presentation WIP
 
 ## Project Overview
 
@@ -35,3 +31,12 @@ This section lists all the required deliverables for the class project.
 ### Similar Songs
 
 ### Sentiment Analysis
+
+## Other Important Pages
+
+Here are the rest of the important directory paths found in this repo:
+
+* [HTML Templates](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/templates)
+* [Sources](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/docs/sources.txt)
+* [CSV Datasets](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/data)
+* [Metapy Configs](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/config)
