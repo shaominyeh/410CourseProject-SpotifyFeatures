@@ -46,7 +46,6 @@ def train_model(X, y, random_state):
 
 def compute_sentiment(songs, user_index, model, tfidf_model):
     """Computing sentiment of the chosen index."""
-    user_index = 2
     query = songs.iloc[user_index]['lyrics']
     query_vector = tfidf_model.transform([query])
     predicted_score = model.predict(query_vector)

@@ -64,7 +64,7 @@ def song_search_sentiment_list():
 
 @app.route('/sentiment_analysis_results/<user_index>', methods=['POST'])
 def sentiment_analysis_results(user_index):
-    """sentiment analysis list based on the chosen song and feature options."""
+    """Sentiment analysis list based on the chosen song and feature options."""
     if request.form['random_state']:
         random_state = int(request.form['random_state'])
     else:
