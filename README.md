@@ -43,21 +43,21 @@ If the above is done correctly, all you need to do is input the following for th
 ```
 pip install -r requirements.txt
 ```
-More specifically, in the cmd prompt (use cmd, not terminal), it should look like the following:
+More specifically, in the command prompt (use command prompt, not terminal), it should look like the following:
 ```
 (SpotifyApp) C:\Users\(user)>pip install -r requirements.txt
 ```
 
 ## Project Development
-After the project installation is done, you should have a development environment containing the repository, Conda environment, and respective libraries. After this, you need to open a cmd prompt (if on Windows) and run the commands listed below. 
+After the project installation is done, you should have a development environment containing the repository, Conda environment, and respective libraries. After this, you need to open a command prompt (if on Windows) and run the s listed below. 
 
-To begin, the commands in each subsection will need you to type:
+To begin, the s in each subsection will need you to type:
 ```
 cd src
 ``` 
 
 ### Flask Application
-If everything is setup correctly, typing the following command and accessing http://127.0.0.1:5000/ should lead to the webpage.
+If everything is setup correctly, typing the following  and accessing http://127.0.0.1:5000/ should lead to the webpage.
 ```
 python app.py
 ```
