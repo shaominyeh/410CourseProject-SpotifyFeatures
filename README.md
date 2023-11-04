@@ -10,6 +10,7 @@ This section lists all the required deliverables for the class project:
 
 * [Project Proposal](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Project%20Proposal.pdf)
 * [Progress Report](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Project%20Progress%20Report.pdf)
+    * [Repository state at the time of this report](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/2b9611861ecd8c87bafb9a20a7e786936c2bea20)
 * [Code](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src)
 * Final Documentation WIP
 * Presentation WIP
@@ -90,6 +91,7 @@ This section consists of how models were implemented:
 Here are the rest of the important directory paths found in this repo:
 
 * [Sources](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/docs/sources.txt)
-* [HTML Templates](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/templates)
+* [HTML Templates](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src/templates)
+* [CSS Templates](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src/static)
 * [CSV Datasets](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/data)
 * [Metapy Configs](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/config)
