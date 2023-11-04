@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/query.css') }}">
+</head>
+
+<body>
+  <div class="logo-container"></div>
+  <h1>Query Search</h1>
+  <h2>Type in a query name to retrieve the top 25 songs</h2>
+  <p>If you do not want separated rankings, leave the weights empty
+    <br>
+    If any weight is left empty, rankings will default to combined rankings
+    <br>
+    Please round your weights to the hundredth place
+  </p>
+  <form action="/search_engine_list" method="post">
+    <br><br>
+    <label for="query">Query:</label>
+    <input type="text" id="query" name="query" placeholder="Query Name" required>
+    <br><br>
+    <label for="weights">Separated Ranking Weights:</label>
+    <br>
+    <input type="number" id="title_weight" name="title_weight" placeholder="Title Weight" min="0.01" step="0.01">
+    <input type="number" id="artist_weight" name="artist_weight" placeholder="Artist Weight" min="0.01" step="0.01">
+    <input type="number" id="lyrics_weight" name="lyrics_weight" placeholder="Lyrics Weight" min="0.01" step="0.01">
+    <br><br>
+    <input type="submit" value="Submit">
+    <form>
+      <input type="button" value="Back" onclick="history.back()">
+    </form>
+  </form>
+</body>
+
+</html>

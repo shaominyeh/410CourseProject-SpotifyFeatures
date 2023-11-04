@@ -7,7 +7,7 @@ import sentiment_analysis
 import similar_songs
 import song_search
 
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def home_page():

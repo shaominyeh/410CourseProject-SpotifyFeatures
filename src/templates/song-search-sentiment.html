@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/query.css') }}">
+</head>
+
+<body>
+  <div class="logo-container"></div>
+  <h1>Sentiment Analysis Song Search</h1>
+  <h2>First, type in your query and choose title or artist to indicate your search choice</h2>
+  <form action="/song_search_sentiment_list" method="post">
+    <br><br>
+    <label for="query">Query:</label>
+    <input type="text" id="query" name="query" placeholder="Query Name" required>
+    <br><br>
+    <label for="search_choice">Search Choice:</label>
+    <select name="search_choice" required>
+      <option value="title">Title</option>
+      <option value="artist">Artist</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+    <form>
+      <input type="button" value="Back" onclick="history.back()">
+    </form>
+  </form>
+</body>
+
+</html>

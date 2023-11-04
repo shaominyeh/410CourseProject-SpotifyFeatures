@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+</head>
+
+<body>
+  <div class="logo-container"></div>
+  <h1>Sentiment Analysis Results</h1>
+  <p>This table contains the predicted sentiment score versus the actual score. This also contains the random state and model MSE.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Predicted Score</th>
+        <th>Actual Score</th>
+        <th>MSE</th>
+        <th>Random State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ predicted_score }}</td>
+        <td>{{ actual_score }}</td>
+        <td>{{ mse }}</td>
+        <td>{{ random_state }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <pr>This table contains the most significant words in your song.</pr>
+  <table>
+    <thead>
+      <tr>
+        <th>Word Lyric</th>
+        <th>Significance Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for index, score in top_words %}
+      <tr>
+        <td>{{ feature_names[index] }}</td>
+        <td>{{ score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <form>
+    <input type="button" value="Back" onclick="history.back()">
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo-container"></div>
+    <h1>The Spotify Feature App</h1>
+    <h2>We have three different functionalities revolving around Spotify songs:</h2>
+    <p>By: Shao-Min Yeh</p>
+    <br>
+    <div class="btn-container">
+      <form action="/search_engine" method="POST">
+        <button class="btn" type="submit">Search Engine</button>
+      </form>
+      <form action="/song_search_sentiment" method="POST">
+        <button class="btn" type="submit">Sentiment Analysis</button>
+      </form>
+      <form action="/song_search_similar" method="POST">
+        <button class="btn" type="submit">Similar Songs</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
