@@ -25,11 +25,11 @@ def ranking(songs, user_query, config):
     query = metapy.index.Document()
     query.content(query_name.lower())
 
-    top_k = 200
+    top_k = 200 # High value to combat duplicated songs
     results = ranker.score(idx, query, top_k)
 
     songs_list = np.zeros(len(songs))
-    for result in results:
+    for result in results: # Result is formatted as (song index, score)
         songs_list[result[0]] = result[1]
     return songs_list
 
@@ -44,13 +44,13 @@ def results_list(songs, songs_list, top_k):
     count = 0
     top_set = set()
     top_songs = []
-    songs_indices = np.argsort(songs_list)[::-1]
+    songs_indices = np.argsort(songs_list)[::-1] # Sort to find highest scoring indices
     for song in songs_indices:
-        if songs_list[song] <= 0 or count >= top_k:
+        if songs_list[song] <= 0 or count >= top_k: # No songs left or met song count
             break
         song_pair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
         if song_pair not in top_set:
-            top_songs.append((song_pair, songs_list[song]))
+            top_songs.append((song_pair, songs_list[song])) # Adding the score as well
             top_set.add(song_pair)
             count += 1
     return top_songs
@@ -77,9 +77,9 @@ def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weig
 
 if __name__ == '__main__':
     songs = preprocess_tasks()
-    USER_QUERY = "hello"
+    USER_QUERY = "hello" # Any ASCII String
 
-    IS_SEPARATED_RANK = True
+    IS_SEPARATED_RANK = True # Boolean
     if IS_SEPARATED_RANK:
         songs_list = separated_ranking(songs, USER_QUERY, 0.35, 0.35, 0.3)
     else:

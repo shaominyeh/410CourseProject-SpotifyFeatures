@@ -12,7 +12,7 @@ def preprocess_tasks():
     preprocess.make_corpus()
     return pd.read_csv('../data/formatted_songs.csv')
 
-def tfidf_features(song_index, songs):
+def lyric_features(song_index, songs):
     """Computes similar songs with just TF-IDF."""
     lyrics = songs['lyrics']
     tfidf_model = TfidfVectorizer()
@@ -22,7 +22,7 @@ def tfidf_features(song_index, songs):
     knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
     knn_model.fit(features)
 
-    query_features = features[song_index]
+    query_features = features[song_index] # As Numpy Array
     return knn_model.kneighbors(query_features.reshape(1, -1))
 
 def music_features(song_index, songs):
@@ -34,7 +34,7 @@ def music_features(song_index, songs):
     knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
     knn_model.fit(features)
 
-    query_features = features.iloc[song_index].values.reshape(1, -1)
+    query_features = features.iloc[song_index].values.reshape(1, -1) # Reshaping dataframe
     return knn_model.kneighbors(query_features.reshape(1, -1))
 
 def combined_features(song_index, songs):
@@ -45,12 +45,12 @@ def combined_features(song_index, songs):
     musical_features = songs[['track_popularity','danceability','energy','key','loudness',\
                               'mode','speechiness','acousticness','instrumentalness',\
                                 'liveness','valence','tempo','duration_ms']]
-    features = hstack([tfidf_features.toarray(), musical_features])
+    features = hstack([tfidf_features.toarray(), musical_features]) # Combining features
 
     knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
     knn_model.fit(features)
 
-    query_features = features.getrow(song_index).toarray()
+    query_features = features.getrow(song_index).toarray() # Getting row of features in format
     return knn_model.kneighbors(query_features)
 
 def similar_songs(user_index, selected_feature):
@@ -58,7 +58,7 @@ def similar_songs(user_index, selected_feature):
     songs = preprocess_tasks()
 
     if selected_feature == "tfidf":
-        distances, indices = tfidf_features(user_index, songs)
+        distances, indices = lyric_features(user_index, songs)
     elif selected_feature == "musical":
         distances, indices = music_features(user_index, songs)
     else:
@@ -71,12 +71,13 @@ def results_list(songs, distances, indices):
     top_set = set()
     top_songs = []
     top_k = 25
+    distances = distances[0]
     for song in indices[0]:
         if count >= top_k:
             break
         song_pair = (songs.iloc[song]['track_name'], songs.iloc[song]['track_artist'])
         if song_pair not in top_set:
-            top_songs.append((song_pair,distances[0][count]))
+            top_songs.append((song_pair,distances[count]))
             top_set.add(song_pair)
             count += 1
     return top_songs
@@ -91,7 +92,7 @@ def print_results(top_songs):
             print("Song Title: {} | Artist: {} | Distance {}".format(pair[0], pair[1], score))
 
 if __name__ == '__main__':
-    CHOSEN_INDEX = 0
-    CHOSEN_FEATURE = "tfidf"
+    CHOSEN_INDEX = 0 # Any int less than 15000
+    CHOSEN_FEATURE = "tfidf" # "tfidf", "musical", or "combined"
 
     print_results(similar_songs(CHOSEN_INDEX, CHOSEN_FEATURE))

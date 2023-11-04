@@ -25,10 +25,10 @@ def search_engine_list():
     title_weight = request.form['title_weight']
     artist_weight = request.form['artist_weight']
     lyrics_weight = request.form['lyrics_weight']
-    if title_weight and artist_weight and lyrics_weight:
+    if title_weight and artist_weight and lyrics_weight: # Separated Ranking
         top_songs = search_engine.query_search(request.form['query'], True,\
                                     float(title_weight), float(artist_weight), float(lyrics_weight))
-    else:
+    else: # Combined Ranking
         top_songs = search_engine.query_search(request.form['query'], False, 0.0, 0.0, 0.0)
     return render_template('search-engine-results.html', songs=top_songs)
 
@@ -65,11 +65,11 @@ def song_search_sentiment_list():
 @app.route('/sentiment_analysis_results/<user_index>', methods=['POST'])
 def sentiment_analysis_results(user_index):
     """Sentiment analysis list based on the chosen song and feature options."""
-    if request.form['random_state']:
+    if request.form['random_state']: # Random State Option
         random_state = int(request.form['random_state'])
     else:
         random_state = random.randint(0, 100000)
-    if request.form['tokenization'] == 'True':
+    if request.form['tokenization'] == 'True': # Tokenization Option
         tokenization = True
     else:
         tokenization = False
@@ -80,4 +80,4 @@ def sentiment_analysis_results(user_index):
                   random_state=random_state)
 
 if __name__ == '__main__':
-    app.run(threaded=False)
+    app.run(threaded=False) # Single-threaded due to Metapy and Flask conflicts

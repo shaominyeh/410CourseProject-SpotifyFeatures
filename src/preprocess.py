@@ -15,15 +15,14 @@ def extract_columns():
     if not os.path.isfile(FORMATTED_SONGS_PATH):
         if os.path.isfile(SONGS_DATA_PATH):
             os.remove(SONGS_DATA_PATH)
-        if os.path.isfile(LYRICS_DATA_PATH):
             os.remove(LYRICS_DATA_PATH)
             os.remove(ARTIST_DATA_PATH)
             os.remove(TITLE_DATA_PATH)
         songs = pd.read_csv(SPOTIFY_SONGS_PATH)
         songs = songs.dropna()
         songs = songs[songs['language'] == 'en']
-        songs = songs.drop(['track_album_id', 'playlist_id', 'language'], axis = 1)
-        songs.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)
+        songs = songs.drop(['track_album_id', 'playlist_id', 'language'], axis = 1) # Deleted Cols
+        songs.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True) # Replacing non-ASCII chars
         songs.to_csv(FORMATTED_SONGS_PATH)
     return FORMATTED_SONGS_PATH
 
@@ -31,9 +30,9 @@ def create_dat_file(output_file):
     """Creates the dat files for separated and combined features."""
     csv_file = FORMATTED_SONGS_PATH
     csv_reader = csv.reader(open(csv_file, encoding='utf-8'))
-    next(csv_reader, None)
+    next(csv_reader, None) # Ignore Headers
     with open(output_file, 'w') as dat_file:
-        for row in csv_reader:
+        for row in csv_reader: # Output the necessary formatting for dat files
             if output_file == LYRICS_DATA_PATH:
                 combined_content = "{}".format(row[4])
             elif output_file == ARTIST_DATA_PATH:
@@ -46,7 +45,7 @@ def create_dat_file(output_file):
 
 def make_corpus():
     """Makes corpus for separated and combined features."""
-    if not os.path.isfile(SONGS_DATA_PATH) or not os.path.isfile(LYRICS_DATA_PATH):
+    if not os.path.isfile(SONGS_DATA_PATH):
         create_dat_file(SONGS_DATA_PATH)
         create_dat_file(LYRICS_DATA_PATH)
         create_dat_file(ARTIST_DATA_PATH)

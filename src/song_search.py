@@ -18,12 +18,12 @@ def nonduplicated_dict(songs):
             song_dict[song_pair] = song
     return song_dict
 
-def song_search(query_name, is_title):
+def song_search(user_query, is_title):
     """Searches for song based on given query and search mode."""
     songs = preprocess_tasks()
     song_dict = nonduplicated_dict(songs)
 
-    query_name = query_name.lower()
+    query_name = user_query.lower()
     song_list = []
     for (song, index) in song_dict.items():
         if query_name in song[0].lower() and is_title or \
@@ -32,7 +32,7 @@ def song_search(query_name, is_title):
     return song_list
 
 if __name__ == '__main__':
-    USER_QUERY = "tHE"
-    IS_TITLE_SEARCH = False
+    USER_QUERY = "tHE" # Any ASCII String
+    IS_TITLE_SEARCH = False # Boolean
 
     print(song_search(USER_QUERY, IS_TITLE_SEARCH))

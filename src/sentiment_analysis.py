@@ -22,7 +22,7 @@ def tokenize_query(songs):
     # tok = metapy.analyzers.ListFilter(tok, "../config/stopwords.txt", \
                                     #   metapy.analyzers.ListFilter.Type.Reject)
     filtered_lyrics = []
-    for text in songs['lyrics']:
+    for text in songs['lyrics']: # Tokenizes each song's lyrics
         tok.set_content(text.strip())
         tokens = [token for token in tok]
         filtered_lyrics.append(' '.join(tokens))
@@ -33,11 +33,11 @@ def train_model(X, y, random_state):
     X_train, X_test, y_train, y_test = \
         train_test_split(X, y, test_size=0.2, random_state=random_state)
 
-    tfidf_model = TfidfVectorizer()
+    tfidf_model = TfidfVectorizer() # TF-IDF vectorizing model
     X_train = tfidf_model.fit_transform(X_train)
     X_test = tfidf_model.transform(X_test)
 
-    model = LinearRegression()
+    model = LinearRegression() # Linear Regression fitting
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
@@ -47,20 +47,20 @@ def train_model(X, y, random_state):
 def compute_sentiment(songs, user_index, model, tfidf_model):
     """Computing sentiment of the chosen index."""
     query = songs.iloc[user_index]['lyrics']
-    query_vector = tfidf_model.transform([query])
-    predicted_score = model.predict(query_vector)
+    query_vector = tfidf_model.transform([query]) # TF-IDF vectorize the query lyrics
+    predicted_score = model.predict(query_vector) # Predict based on trained model
     return predicted_score[0], songs.iloc[user_index]['valence'], query_vector
 
 def compute_words(tfidf_model, query_vector):
     """Computes the most significant words in the index."""
-    feature_names = tfidf_model.get_feature_names()
+    feature_names = tfidf_model.get_feature_names() # Find word names
 
     word_dict = {}
     for index, score in zip(query_vector[0].indices, query_vector[0].data):
         word_dict[index] = score
 
     sorted_scores = sorted(word_dict.items(), key=lambda x:x[1], reverse = True)
-    return sorted_scores[:10], feature_names
+    return sorted_scores[:10], feature_names # Sort based on scores and return list
 
 def result_items(chosen_index, unified_state, is_tokenized_query):
     songs = preprocess_tasks()
@@ -87,9 +87,9 @@ def print_items(predicted_score, actual_score, top_words, feature_names, mse):
         print(feature_names[index], score)
 
 if __name__ == '__main__':
-    CHOSEN_INDEX = 0
-    UNIFIED_STATE = 47
-    IS_TOKENIZED_QUERY = False
+    CHOSEN_INDEX = 0 # Any int less than 15000
+    UNIFIED_STATE = 47 # Any positive int
+    IS_TOKENIZED_QUERY = False # Bool
 
     main_predicted_score, main_actual_score, main_top_words, main_feature_names, main_mse\
           = result_items(CHOSEN_INDEX, UNIFIED_STATE, IS_TOKENIZED_QUERY)
