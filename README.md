@@ -50,9 +50,9 @@ More specifically, in the command prompt (use command prompt, not terminal), it 
 ```
 
 ## Project Development
-After the project installation is done, you should have a development environment containing the repository, Conda environment, and respective libraries. After this, you need to open a command prompt (if on Windows) and run the s listed below. 
+After the project installation is done, you should have a development environment containing the repository, Conda environment, and respective libraries. After this, you need to open a command prompt (if on Windows) and run the commands listed below. 
 
-To begin, the s in each subsection will need you to type:
+To begin, the commands in each subsection will need you to type:
 ```
 cd src
 ``` 
