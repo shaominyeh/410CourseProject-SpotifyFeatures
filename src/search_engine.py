@@ -13,7 +13,7 @@ def preprocess_tasks():
 
 def load_ranker():
     """BM25 ranking function."""
-    return metapy.index.OkapiBM25(k1=1.66,b=0.72,k3=2.2)
+    return metapy.index.OkapiBM25(k1=1.25,b=0.6,k3=0.0)
 
 def ranking(songs, user_query, config):
     """Scores the most similar songs."""
@@ -64,6 +64,17 @@ def print_results(top_songs):
         for pair, score in top_songs:
             print("Song Title: {} | Artist: {} | Score {}".format(pair[0], pair[1], score))
 
+def params_test(songs, queries, params_file):
+    file_name = "../data/queries/" + params_file
+    for query in queries:
+        songs_list = separated_ranking(songs, query, 0.33, 0.33, 0.33)
+        top_songs = results_list(songs, songs_list, 10)
+        with open(file_name, 'a') as file:
+            file.write("Query is: {}\n".format(query))
+            for pair, _ in top_songs:
+                file.write("{} by: {}\n".format(pair[0], pair[1]))
+            file.write("\n")
+
 def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weight):
     """Accessible method for web app."""
     songs = preprocess_tasks()
@@ -77,12 +88,19 @@ def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weig
 
 if __name__ == '__main__':
     songs = preprocess_tasks()
-    USER_QUERY = "hello" # Any ASCII String
+    IS_PARAM_TEST = False # Boolean, use if you want to test parameters only (False for general use).
 
-    IS_SEPARATED_RANK = True # Boolean
-    if IS_SEPARATED_RANK:
-        songs_list = separated_ranking(songs, USER_QUERY, 0.35, 0.35, 0.3)
+    if not IS_PARAM_TEST:
+        USER_QUERY = "hello" # Any ASCII String
+        IS_SEPARATED_RANK = True # Boolean
+        if IS_SEPARATED_RANK:
+            songs_list = separated_ranking(songs, USER_QUERY, 0.33, 0.33, 0.33)
+        else:
+            songs_list = ranking(songs, USER_QUERY, "../config/config.toml")
+
+        print_results(results_list(songs, songs_list, 10))
     else:
-        songs_list = ranking(songs, USER_QUERY, "../config/config.toml")
-
-    print_results(results_list(songs, songs_list, 10))
+        # If you want to test out parameters test, change them and call params_test to a new file.
+        QUERY_LIST = ["hello", "bye", "weeknd", "cold", "the", "polo", "mars", "hey", "no", "poker"]
+        PARAMS_NAME = "k1_125__b_06.txt"
+        params_test(songs, QUERY_LIST, PARAMS_NAME)

@@ -1,0 +1,120 @@
+Query is: hello
+Hello Hello by: Fickle Friends
+Hello by: Martin Solveig
+Hello by: Blackfield
+Hello by: Adele
+Hello by: Eminem
+Hello, I Love You by: The Doors
+Hello Sunshine by: Bruce Springsteen
+Hello by: Ice Cube
+Hello - Feat. Dr. Dre And MC Ren by: Ice Cube
+Hello It's Me by: Todd Rundgren
+
+Query is: bye
+Bye Bye Bye by: *NSYNC
+Bye Bye by: Gryffin
+Bye Bye (feat. Ivy Adara) by: Gryffin
+BOY BYE by: BROCKHAMPTON
+Hallo Spaceboy (with the Pet Shop Boys) - Pet Shop Boys Remix by: David Bowie
+Goodbyes (Feat. Young Thug) by: Post Malone
+Gonna Be Alright - Tom Ferry Remix by: Tritonal
+Goodbyes (feat. Young Thug) by: Post Malone
+Goodbye Love by: Guy
+Driftin' Blues by: Charles Brown
+
+Query is: weeknd
+Same Old Song by: The Weeknd
+UnFazed (feat. The Weeknd) by: Lil Uzi Vert
+Tuesday (feat. Drake) by: ILOVEMAKONNEN
+Bedtime Stories (feat. The Weeknd) - From SR3MM by: Rae Sremmurd
+The Hills by: The Weeknd
+Call Out My Name by: The Weeknd
+Can't Feel My Face by: The Weeknd
+Can't Feel My Face - Martin Garrix Remix by: The Weeknd
+Starboy by: The Weeknd
+Prisoner by: The Weeknd
+
+Query is: cold
+Cold Cold Cold by: Cage The Elephant
+Cold by: Maroon 5
+Cold by: Crossfade
+Cold Cold Man by: Saint Motel
+Cold by: James Blunt
+Cold Hearted by: Paula Abdul
+Cold Water by: Major Lazer
+Cold as Ice by: Foreigner
+You're So Cold by: Mariah Carey
+Hot N Cold by: Katy Perry
+
+Query is: the
+The Sound by: The 1975
+The Party & The After Party by: The Weeknd
+The City by: The Game
+The Rain, The Park & Other Things - Single Version by: The Cowsills
+Uncertain Smile - Original 7" Version 1982 by: The The
+The Moth & The Flame by: Les Deux Love Orchestra
+The Gangsta, The Killa And The Dope Dealer by: Westside Connection
+Rock Lobster - 45 Version by: The B-52's
+Love Shack by: The B-52's
+On my shoulders by: The D
+
+Query is: polo
+Pop Out (feat. Lil Tjay) by: Polo G
+Girls Like (feat. Zara Larsson) by: Tinie Tempah
+How I Move (feat. Lil Baby) by: Flipp Dinero
+First Place by: Polo G
+Heartless (feat. Mustard) by: Polo G
+Finer Things by: Polo G
+Dreams In A Wraith by: Jay Critch
+Lemonade by: Gucci Mane
+Stay Schemin by: Rick Ross
+Shut Up (feat. Duece Poppito of 24 Karatz, Trina, & Co of Tre +) by: Trick Daddy
+
+Query is: mars
+Mars by: Alexander 23
+Wouldn't Change a Thing by: Demi Lovato
+gone girl by: iann dior
+Versace On The Floor (Bruno Mars vs. David Guetta) by: Bruno Mars
+Fortress - Just A Gent Remix by: ILLENIUM
+Roses by: OutKast
+Birds Fly - W&W Festival Mix Edit by: Hardwell
+Sweat On Me by: Tape Machines
+Aquarius / Let the Sunshine In (The Flesh Failures) [Remastered] by: The 5th Dimension
+What You Say by: Cabela and Schmitt
+
+Query is: hey
+Hey Hey Hey by: Katy Perry
+Hey Hey - Gianni Kosta Remix by: BYNON
+Hey Mister by: Tujamo
+Hey Mama by: Geko
+Hey Lover by: LL Cool J
+Hey Ya by: Obadiah Parker
+Hey Ya! by: OutKast
+Hey Moon by: John Maus
+Hey Baby by: Dimitri Vegas & Like Mike
+Hey Jealousy by: Gin Blossoms
+
+Query is: no
+No Sleep by: No Love For The Middle Child
+Safe Dream by: Tep No
+Don't Speak by: No Doubt
+Just A Girl - Acoustic Live - German Radio by: No Doubt
+Toluca Lake - Imad Remix by: Tep No
+Narcissist (feat. The 1975) by: No Rome
+Me and My Guitar by: Tep No
+The Best Crew by: Tep No
+Do It Again by: No Rome
+Dangerous by: No Friends
+
+Query is: poker
+Poker Face by: Lady Gaga
+Bad Habits by: The Federal Empire
+We're An American Band - Remastered 2002 by: Grand Funk Railroad
+Warm Me Up by: The Audition
+Enough by: Flume
+Saturday Night Special by: Lynyrd Skynyrd
+We're An American Band by: Grand Funk Railroad
+No Lie (feat. WizKid) by: GoldLink
+Steady Mobbin by: Young Money
+Jingle Baby by: Stephanie Mills
+
