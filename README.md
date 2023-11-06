@@ -52,7 +52,11 @@ More specifically, in the command prompt (use command prompt, not terminal), it 
 ## Project Development
 After the project installation is done, you should have a development environment containing the repository, Conda environment, and respective libraries. After this, you need to open a command prompt (if on Windows) and run the commands listed below. 
 
-To begin, the commands in each subsection will need you to type:
+First, open a command prompt and initialize the Conda environment:
+```
+conda activate SpotifyApp
+```
+Then, the commands in each subsection will need you to type:
 ```
 cd src
 ``` 
