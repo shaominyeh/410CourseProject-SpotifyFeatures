@@ -65,6 +65,7 @@ def print_results(top_songs):
             print("Song Title: {} | Artist: {} | Score {}".format(pair[0], pair[1], score))
 
 def params_test(songs, queries, params_file):
+    """Tests the parameters in a new file."""
     file_name = "../data/queries/" + params_file
     for query in queries:
         songs_list = separated_ranking(songs, query, 0.33, 0.33, 0.33)
@@ -88,7 +89,7 @@ def query_search(query, rank_separated, title_weight, artist_weight, lyrics_weig
 
 if __name__ == '__main__':
     songs = preprocess_tasks()
-    IS_PARAM_TEST = False # Boolean, use if you want to test parameters only (False for general use).
+    IS_PARAM_TEST = False # Boolean, True only if you're testing parameters.
 
     if not IS_PARAM_TEST:
         USER_QUERY = "hello" # Any ASCII String

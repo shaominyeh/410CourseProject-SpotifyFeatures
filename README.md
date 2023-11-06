@@ -95,3 +95,4 @@ Here are the rest of the important directory paths found in this repo:
 * [CSS Templates](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src/static)
 * [CSV Datasets](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/data)
 * [Metapy Configs](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/config)
+* [Search Engine Queries Testing](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/data/queries)
