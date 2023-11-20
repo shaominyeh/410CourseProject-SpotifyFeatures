@@ -2,6 +2,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
+from sklearn.preprocessing import StandardScaler
 from scipy.sparse import hstack
 
 import preprocess
@@ -42,10 +43,13 @@ def combined_features(song_index, songs):
     lyrics = songs['lyrics']
     tfidf_model = TfidfVectorizer()
     tfidf_features = tfidf_model.fit_transform(lyrics)
+
+    scaled = StandardScaler()
     musical_features = songs[['track_popularity','danceability','energy','key','loudness',\
                               'mode','speechiness','acousticness','instrumentalness',\
                                 'liveness','valence','tempo','duration_ms']]
-    features = hstack([tfidf_features.toarray(), musical_features]) # Combining features
+    scaled_features = scaled.fit_transform(musical_features) # Normalize musical features
+    features = hstack([tfidf_features, scaled_features]) # Combining features
 
     knn_model = NearestNeighbors(n_neighbors=50, metric='cosine')
     knn_model.fit(features)
