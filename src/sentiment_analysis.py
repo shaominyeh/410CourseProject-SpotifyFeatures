@@ -19,8 +19,8 @@ def tokenize_query(songs):
     tok = metapy.analyzers.ICUTokenizer(suppress_tags=True)
     tok = metapy.analyzers.LowercaseFilter(tok)
     tok = metapy.analyzers.Porter2Filter(tok)
-    tok = metapy.analyzers.ListFilter(tok, "../config/stopwords.txt", \
-                                      metapy.analyzers.ListFilter.Type.Reject)
+    # tok = metapy.analyzers.ListFilter(tok, "../config/stopwords.txt", \
+    #                                   metapy.analyzers.ListFilter.Type.Reject)
     filtered_lyrics = []
     for text in songs['lyrics']: # Tokenizes each song's lyrics
         tok.set_content(text.strip())
