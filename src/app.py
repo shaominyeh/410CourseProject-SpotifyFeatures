@@ -73,8 +73,8 @@ def sentiment_analysis_results(user_index):
         tokenization = True
     else:
         tokenization = False
-    predicted_score, actual_score, top_words, feature_names, mse = \
-        sentiment_analysis.result_items(int(user_index), random_state, tokenization)
+    predicted_score, actual_score, top_words, feature_names, mse = sentiment_analysis\
+        .result_items(int(user_index), random_state, tokenization, request.form['model'])
     return render_template('sentiment-analysis-results.html', predicted_score=predicted_score,\
             actual_score=actual_score, top_words=top_words, feature_names=feature_names, mse=mse,\
                   random_state=random_state)

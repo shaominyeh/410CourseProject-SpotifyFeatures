@@ -9,7 +9,7 @@
   <div class="logo-container"></div>
   <h1>Songs List</h1>
   <h2>Here are the songs that match your query</h2>
-  <p>Before choosing a song, choose if you want to tokenize the lyrics dataset (Takes longer but less prone to overfit). Furthermore, pick a random state if desired. Note that this will take longer than a minute to run.</p>
+  <p>Before choosing a song, choose if you want to tokenize the lyrics dataset. Next, pick a modeling type to train the model with.<br>Furthermore, pick a random state if desired. Note that Linear Regression tends to perform much worse and takes longer to run.</p>
   <table>
     <thead>
       <tr>
@@ -26,8 +26,15 @@
         <td>
           <form method="POST" action="/sentiment_analysis_results/{{ song[1] }}">
             <select id="tokenization" name="tokenization" required>
+              <option disabled selected>Select Tokenization Option</option>
               <option value="False">No Tokenization</option>
               <option value="True">Lyric Tokenization</option>
+            </select>
+            <select id="model" name="model" required>
+              <option disabled selected>Select a Model</option>
+              <option value="ridge">Ridge Regression</option>
+              <option value="lasso">Lasso Regression</option>
+              <option value="linear">Linear Regression</option>
             </select>
             <input type="number" id="random_state" name="random_state" placeholder="Random Model State">
             <button class="button" type="submit">Select Song</button>
