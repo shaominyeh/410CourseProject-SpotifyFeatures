@@ -12,8 +12,8 @@ This section lists all the required deliverables for the class project:
 * [Progress Report](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Project%20Progress%20Report.pdf)
     * [Repository state at the time of this report](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/2b9611861ecd8c87bafb9a20a7e786936c2bea20)
 * [Code](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/tree/main/src)
-* Final Documentation WIP
-* Presentation WIP
+* [Final Documentation](https://github.com/shaominyeh/410CourseProject-SpotifyFeatures/blob/main/Final%20Documentation.pdf)
+* [Final Presentation](https://www.youtube.com/watch?v=5idvIV9kSIA)
 
 ## Project Overview
 
